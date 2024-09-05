@@ -1,26 +1,18 @@
-// GameEngineY2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
-#include "raylib.h"
-#include "Engine/List.h"
+#include "Engine/Engine.h"
+#include "TestScene.h"
 
 int main(int argc, char* argv[])
 {
+    GameEngine::Engine engine = GameEngine::Engine();
+    
+    TestScene* scene = new TestScene();
 
-
-    InitWindow(800, 450, "raylib [core] example - basic window");
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
-    }
-
-    CloseWindow();
-
+    engine.setCurrentScene(scene);
+    engine.run();
     return 0;
 }
 

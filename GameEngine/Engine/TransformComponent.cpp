@@ -78,6 +78,13 @@ void GameEngine::TransformComponent::updateMatrices()
 	GameMath::Matrix3 translation = GameMath::Matrix3::createTranslation(m_translation);
 	GameMath::Matrix3 rotation = GameMath::Matrix3::createRotation(m_rotation);
 	GameMath::Matrix3 scale = GameMath::Matrix3::createScale(m_scale);
+
+	m_localMatrix = translation * rotation * scale;
+
+	if (m_parent)
+		m_globalMatrix = m_parent->getGlobalMatrix() * m_localMatrix;
+	else
+		m_globalMatrix = m_localMatrix;
 }
 
 
