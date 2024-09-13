@@ -2,6 +2,8 @@
 #include "List.h"
 #include "Entity.h"
 #include "Physics/ColliderComponent.h"
+#include "Physics/RigidBodyComponent.h"
+
 
 GameEngine::Scene::Scene()
 {
@@ -59,6 +61,7 @@ void GameEngine::Scene::fixedUpdated(float fixedDeltaTime)
 			if (collisionData1 = collider1->checkCollision(collider2))
 			{
 				//get collider1 rigidboidy and resolve collision
+				collider1->getRigidBoidy()->resolveCollision(collisionData1);
 				
 				//call collider1.owner.oncollisionEnter()
 				collider1->getOwner()->onCollisionEnter(collisionData1);

@@ -48,6 +48,7 @@
     <ClInclude Include="Engine\TransformComponent.h" />
     <ClInclude Include="Graphics\Window.h" />
     <ClInclude Include="Graphics\ShapeComponent.h" />
+    <ClInclude Include="Physics\AABBColliderComponent.h" />
     <ClInclude Include="Physics\CircleColliderComponent.h" />
     <ClInclude Include="Physics\ColliderComponent.h" />
   </ItemGroup>

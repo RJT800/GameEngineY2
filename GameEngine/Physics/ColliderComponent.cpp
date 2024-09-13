@@ -28,4 +28,5 @@ void GamePhysics::ColliderComponent::onCollisionEnter(GamePhysics::Collision* ot
 
 void GamePhysics::ColliderComponent::update(double deltatime)
 {
+	m_color = 0x00FF00FF;
 }
