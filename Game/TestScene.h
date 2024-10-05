@@ -13,6 +13,7 @@ private:
 
 	GameEngine::Entity* m_circle1;
 	GameEngine::Entity* m_circle2;
+	GameEngine::Entity* m_square1;
 	float m_accumulatiedTime = 0;
 
 };

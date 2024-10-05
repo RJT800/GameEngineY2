@@ -38,7 +38,7 @@ namespace GamePhysics
 		bool getIsTrigger() { return m_isTrigger; }
 		void setIsTrigger(bool isTrigger) { m_isTrigger = isTrigger; }
 
-		RigidBodyComponent* getRigidBoidy() { return m_rigidBody; }
+		RigidBodyComponent* getRigidBody() { return m_rigidBody; }
 
 
 	private:

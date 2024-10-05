@@ -27,6 +27,7 @@ GamePhysics::Collision* GamePhysics::CircleColliderComponent::checkCollisionCirc
 
 GamePhysics::Collision* GamePhysics::CircleColliderComponent::checkCollisionAABB(AABBColliderComponent* other)
 {
+    
     return nullptr;
 }
 
@@ -34,5 +35,5 @@ void GamePhysics::CircleColliderComponent::draw()
 {
     GameMath::Vector2 position = getOwner()->getTransform()->getGlobalPosition();
 
-    RAYLIB_H::DrawCircleLines(position.x, position.y, getRadius(), GetColor(getColor()));
+    RAYLIB_H::DrawCircleLines(position.x, position.y, getRadius()/2, GetColor(getColor()));
 }

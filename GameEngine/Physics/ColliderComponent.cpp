@@ -1,11 +1,14 @@
 #include "ColliderComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/Scene.h"
+#include "Engine/Entity.h"
+#include "RigidBodyComponent.h"
 void GamePhysics::ColliderComponent::start()
 {
 	//add collider to the scene
 	//get owner's rigidbody
 	GameEngine::Engine::getCurrentScene()->addActiveCollider(this);
+	m_rigidBody = getOwner()->getComponent<GamePhysics::RigidBodyComponent>();
 
 }
 
