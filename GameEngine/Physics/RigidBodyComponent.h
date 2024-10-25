@@ -16,6 +16,9 @@ namespace GamePhysics
 		float getGravity() { return m_gravity; }
 		void setGravity(float gravity) { m_gravity = gravity; }
 
+		bool getIsKinematic() { return m_isKinematic; }
+		void setIsKinematic(bool state) { m_isKinematic = state; }
+
 		void applyForce(GameMath::Vector2 force);
 		void applyForceToEntity(RigidBodyComponent* rigidBody, GameMath::Vector2 force);
 
@@ -26,5 +29,6 @@ namespace GamePhysics
 		GameMath::Vector2 m_velocity;
 		float m_mass = 1;
 		float m_gravity = 9.81f;
+		bool m_isKinematic = false;
 	};
 }

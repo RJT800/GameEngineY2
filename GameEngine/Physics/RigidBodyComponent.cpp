@@ -7,12 +7,16 @@
 
 void GamePhysics::RigidBodyComponent::applyForce(GameMath::Vector2 force)
 {
+	
 	m_velocity = m_velocity + force / getMass();
 }
 
 void GamePhysics::RigidBodyComponent::applyForceToEntity(RigidBodyComponent* rigidBody, GameMath::Vector2 force)
 {
+	if (!getIsKinematic())
 	applyForce(force * -1);
+
+	if (!(rigidBody->getIsKinematic()))
 	rigidBody->applyForce(force);
 }
 
@@ -28,15 +32,19 @@ void GamePhysics::RigidBodyComponent::fixedUpdate(float fixedDeltaTime)
 void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* collisionData)
 {
 	
+	//Get everything for the formula
 	GameMath::Vector2 firstVelocity = getVelocity();
 	GameMath::Vector2 secondVelocity = collisionData->collider->getRigidBody()->getVelocity();
-	float firstMass = 1/getMass();
-	float secondMass = 1/collisionData->collider->getRigidBody()->getMass();
+	float firstMass = getMass();
+	float secondMass = collisionData->collider->getRigidBody()->getMass();
 
-		float theThing =((1 * (GameMath::Vector2::dotProduct(firstVelocity - secondVelocity, collisionData->normal))
+	//Does the formula
+		float formulaResult =((.1 * (GameMath::Vector2::dotProduct(firstVelocity - secondVelocity, collisionData->normal))
 		/ (GameMath::Vector2::dotProduct(collisionData->normal, collisionData->normal)) * (firstMass + secondMass)));
-		GameMath::Vector2 uhhIdk = (theThing, collisionData->normal);
-			applyForce(uhhIdk);
-			applyForceToEntity(collisionData->collider->getRigidBody(), uhhIdk);
+
+		GameMath::Vector2 finalForce = collisionData->normal * formulaResult;
+
+		//Applies forces to Entities
+		applyForceToEntity(collisionData->collider->getRigidBody(), finalForce);
 	
 }
